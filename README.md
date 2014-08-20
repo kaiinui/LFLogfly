@@ -8,7 +8,29 @@ LFLogfly
 STATUS
 ---
 
-![](progressed.io/bar/0)
+![](http://progressed.io/bar/0)
+
+Usage
+---
+
+```objc
++ (FLLogfly *)sharedLogger;
+
+- (void)log:(NSString *)aString;
+
+- (void)pageView:(UIViewController *)viewController;
+- (void)event:(NSString *)tag forViewController:(UIViewController *)viewController;
+```
+
+```objc
+[[FLLogfly sharedLogger] log:@"event.NewUserViewController.button.create_user.push"];
+// or
+[[FLLogfly sharedLogger] event:@"button.create_user.push" forViewController:self];
+```
+
+Will store the log data in SQLite and send them in background thread at appropriate span.
+
+And `LFLogfly` concerns duplication and network failures!
 
 LICENSE
 ---
